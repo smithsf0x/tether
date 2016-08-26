@@ -1,10 +1,10 @@
 TARGET = tether
 
-OBJS = main.o lib/tether/tether.o
+OBJS = main.o lib/tether/tether.o lib/tether/focus.o lib/tether/context.o
 CC = gcc
 
 CFLAGS = -Wall
-LFLAGS = -lSDL2
+LFLAGS = -lSDL2 -lgphoto2
 
 all: $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(LFLAGS) -o $(TARGET)
