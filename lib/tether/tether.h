@@ -2,6 +2,8 @@
 #define TETHER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_render.h>
 #include <gphoto2/gphoto2.h>
 #include "helper.h"
 
@@ -12,6 +14,8 @@ typedef struct{
 
 typedef struct{
   SDL_Surface* viewSurface;
+  SDL_Texture* viewTexture;
+  SDL_Renderer* renderer;
   TETHER_CAMERA* camera;
   int* data;
   CameraFile* file;

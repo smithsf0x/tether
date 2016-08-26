@@ -175,7 +175,7 @@ camera_manual_focus (Camera *camera, int xx, GPContext *context) {
 				fprintf (stderr, "could not get widget choice %d: %d\n", xx+2, ret);
 				goto out;
 			}
-			fprintf(stderr,"manual focus %d -> %s\n", xx, mval);
+			//fprintf(stderr,"manual focus %d -> %s\n", xx, mval);
 		}
 		ret = gp_widget_set_value (child, mval);
 		if (ret < GP_OK) {
@@ -203,7 +203,7 @@ camera_manual_focus (Camera *camera, int xx, GPContext *context) {
 		default:	rval = xx;	break; /* hack */
 		}
 
-		fprintf(stderr,"manual focus %d -> %f\n", xx, rval);
+		//fprintf(stderr,"manual focus %d -> %f\n", xx, rval);
 
 		ret = gp_widget_set_value (child, &rval);
 		if (ret < GP_OK) {
