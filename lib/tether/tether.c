@@ -2,13 +2,13 @@
 
 TETHER* iniTether(SDL_Window* window){
   TETHER* newTether = malloc(sizeof(newTether));
-  if(newTether == NULL){ return NULL; }
+  //if(newTether == NULL){ return NULL; }
   newTether->camera = malloc(sizeof(newTether->camera));
-  if(newTether->camera == NULL){ return NULL; }
+  //if(newTether->camera == NULL){ return NULL; }
   newTether->camera->camera = malloc(sizeof(newTether->camera->camera ));
-  if(newTether->camera->camera == NULL){ return NULL; }
+  //if(newTether->camera->camera == NULL){ return NULL; }
   newTether->viewSurface = SDL_GetWindowSurface( window );
-  if(newTether->viewSurface == NULL){ return NULL; }
+  //if(newTether->viewSurface == NULL){ return NULL; }
 
   return newTether;
 }

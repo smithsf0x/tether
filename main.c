@@ -3,6 +3,8 @@
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 768;
 
+
+/*
 int doCleanExit(int exitCode){
 	if(mainWindow != NULL){
 		SDL_DestroyWindow(mainWindow);
@@ -10,8 +12,15 @@ int doCleanExit(int exitCode){
 	SDL_Quit();
 	return exitCode;
 }
+*/
 
 int main( int argc, char* args[] ){
+	SDL_Window* mainWindow;
+	SDL_Renderer* renderer;
+	TETHER* tether;
+	STATE mainState;
+
+
 	mainWindow = NULL;
 	renderer = NULL;
 	tether = NULL;
@@ -21,7 +30,7 @@ int main( int argc, char* args[] ){
 
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
 		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
-		return doCleanExit(EC_SDL_INIT);
+		//return doCleanExit(EC_SDL_INIT);
 	}
 	mainWindow = SDL_CreateWindow(
 		"tether",
@@ -29,11 +38,11 @@ int main( int argc, char* args[] ){
 		SDL_WINDOWPOS_UNDEFINED,
 		SCREEN_WIDTH,
 		SCREEN_HEIGHT,
-		SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS | SDL_WINDOW_OPENGL
+		SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS
 	);
 	if( mainWindow == NULL ) {
 		printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
-		return doCleanExit(EC_WIN_CREATE);
+		//return doCleanExit(EC_WIN_CREATE);
 	}
 	mainSurface = SDL_GetWindowSurface(mainWindow);
 	renderer = SDL_CreateRenderer(mainWindow, -1, SDL_RENDERER_ACCELERATED);

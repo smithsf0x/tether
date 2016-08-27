@@ -15,7 +15,7 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 #define EC_WIN_CREATE   -12
 #define EC_TET_INIT     -20
 
-#define STATE_OK        1      
+#define STATE_OK        1
 
 
 typedef struct{
@@ -23,9 +23,6 @@ typedef struct{
 }STATE;
 
 
-SDL_Window* mainWindow;
-SDL_Renderer* renderer;
-TETHER* tether;
-STATE mainState;
+
 
 #endif
