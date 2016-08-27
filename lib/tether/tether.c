@@ -2,9 +2,13 @@
 
 TETHER* iniTether(SDL_Window* window){
   TETHER* newTether = malloc(sizeof(newTether));
+  if(newTether == NULL){ return NULL; }
   newTether->camera = malloc(sizeof(newTether->camera));
+  if(newTether->camera == NULL){ return NULL; }
   newTether->camera->camera = malloc(sizeof(newTether->camera->camera ));
+  if(newTether->camera->camera == NULL){ return NULL; }
   newTether->viewSurface = SDL_GetWindowSurface( window );
+  if(newTether->viewSurface == NULL){ return NULL; }
 
   return newTether;
 }
@@ -21,13 +25,13 @@ int tetherSetupCamera(TETHER* tether){
     printf("finished\n");
 	if (retval != GP_OK) {
 		printf("  Retval: %d\n", retval);
-		return (1);
+		return -1;
 	}
 
     retval = camera_eosviewfinder(tether->camera->camera, tether->camera->context,1);
 	if (retval != GP_OK) {
 		fprintf(stderr,"camera_eosviewfinder(1): %d\n", retval);
-		return 1;
+		return -2;
 	}
 
   return 0;
@@ -94,7 +98,7 @@ int tetherFreeData(TETHER* tether){
   //SDL_DestroyTexture(tether->viewTexture);
   //printf("OK\n");
   //printf("Freeing viewSurface..." );
-  SDL_FreeSurface(tether->viewSurface);
+  //SDL_FreeSurface(tether->viewSurface);
   //printf("OK\n");
   //printf("Freeing file..." );
   //gp_file_free(tether->file);

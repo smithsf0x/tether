@@ -7,7 +7,25 @@
 #include <unistd.h>
 #include "lib/tether/tether.h"
 
+const int SCREEN_FPS = 60;
+const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
+
+/* ExitCodes */
 #define EC_SDL_INIT     -10
 #define EC_WIN_CREATE   -12
+#define EC_TET_INIT     -20
+
+#define STATE_OK        1      
+
+
+typedef struct{
+    int code;
+}STATE;
+
+
+SDL_Window* mainWindow;
+SDL_Renderer* renderer;
+TETHER* tether;
+STATE mainState;
 
 #endif

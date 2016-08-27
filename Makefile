@@ -16,4 +16,4 @@ clean:
 
 run:
 	./$(TARGET)
-	echo " "
+	@echo " "
