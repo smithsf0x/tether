@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "lib/tether/tether.h"
+#include "lib/printerr/printerr.h"
 
 const int SCREEN_FPS = 60;
 const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
@@ -16,6 +17,10 @@ const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
 #define EC_TET_INIT     -20
 
 #define STATE_OK        1
+
+SDL_Window* mainWindow;
+SDL_Renderer* renderer;
+TETHER* tether;
 
 
 typedef struct{

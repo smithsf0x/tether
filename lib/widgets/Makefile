@@ -1,6 +1,6 @@
-TARGET = tether
+TARGET = test
 
-OBJS = main.o lib/tether/tether.o lib/tether/focus.o lib/tether/context.o lib/printerr/printerr.o
+OBJS = test.o widgets.o ../printerr/printerr.o
 CC = gcc
 
 CFLAGS = -g -Wall

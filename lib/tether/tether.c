@@ -1,13 +1,15 @@
 #include "tether.h"
 
+
+
 TETHER* iniTether(SDL_Window* window){
   TETHER* newTether = malloc(sizeof(newTether));
-  //if(newTether == NULL){ return NULL; }
+  if(newTether == NULL){ return NULL; }
   newTether->camera = malloc(sizeof(newTether->camera));
-  //if(newTether->camera == NULL){ return NULL; }
+  if(newTether->camera == NULL){ return NULL; }
   newTether->camera->camera = malloc(sizeof(newTether->camera->camera ));
-  //if(newTether->camera->camera == NULL){ return NULL; }
-  newTether->viewSurface = SDL_GetWindowSurface( window );
+  if(newTether->camera->camera == NULL){ return NULL; }
+  //newTether->viewSurface = SDL_GetWindowSurface( window );
   //if(newTether->viewSurface == NULL){ return NULL; }
 
   return newTether;
@@ -87,6 +89,7 @@ int tetherProcessData(TETHER* tether){
 
   texture = SDL_CreateTextureFromSurface(tether->renderer, image);
   tether->viewTexture = texture;
+  tether->viewSurface = image;
 
   gp_file_unref(tether->file);
 
