@@ -7,15 +7,24 @@
 
 #define WIDGET_MOUSE_BUTTON(x) (widgetMouseState & SDL_BUTTON(x))
 
-#define STATE_CLICK 16
-#define STATE_HOVER 8
-#define STATE_IDLE  0
-
 typedef enum{
     idle,
     hover,
     clicked
 }widget_button_state;
+
+typedef enum{
+  wtButton,
+  wtToggle
+}widget_type;
+
+typedef enum{
+  STATE_IDLE,
+  STATE_LMB,
+  STATE_RMB,
+  STATE_MMB,
+  STATE_HOVER
+} widget_state;
 
 typedef struct{
     Uint8 r;
@@ -30,17 +39,21 @@ typedef struct{
 } widget_style;
 
 typedef struct{
-    int w;
-    int h;
-    char* text;
-    SDL_Rect rect;
-    SDL_Surface* surface;
-    SDL_Texture* texture;
-    widget_style style;
-    int state;
-}  widget_button;
+  long _id;
+  widget_type type;
+  void* data;
+  int w;
+  int h;
+  SDL_Rect rect;
+  SDL_Surface* surface;
+  SDL_Texture* texture;
+  widget_style style;
+  int state;
+} _widget;
 
-
+typedef struct{
+  int state;
+} _widget_button;
 
 int widgetMousePosX;
 int widgetMousePosY;
@@ -48,14 +61,11 @@ int widgetMouseState;
 
 void getMousePosition(void );
 
-widget_button* newWidgetButton(char* ,widget_style*, int, int);
-
 int widgetSetColor(_widget_color*, Uint8, Uint8, Uint8, Uint8);
 
-int drawWidgetButton(SDL_Renderer*, widget_button* , int , int );
-int isWidgetButtonPressed(widget_button* );
-int isWidgetButtonHovered(widget_button* );
-int freeWidgetButton(widget_button* );
+_widget* createWidget(widget_type, widget_style*, int, int);
+widget_state getWidgetState(_widget*);
+int drawWidget(SDL_Renderer*, _widget*, int, int);
 
 
 #endif
